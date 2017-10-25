@@ -6,7 +6,8 @@ class PokemonSerializer < ActiveModel::Serializer
 
   def all_stats
     object.pokemon_stats.map do |pokeStat|
-      {"#{pokeStat.stat.name}": pokeStat.base_stat,
+      {base_stat: pokeStat.base_stat,
+      stat_name: pokeStat.stat.name,
       stat_id: pokeStat.stat_id}
     end
   end
