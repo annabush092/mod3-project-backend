@@ -10,9 +10,4 @@ class Api::V1::PokemonsController < ApplicationController
     render json: @pokemon
   end
 
-  # def update
-  #   @pokemon = Pokemon.find_by(id: params[:id])
-  #   render json: @pokemon
-  # end
-
 end
