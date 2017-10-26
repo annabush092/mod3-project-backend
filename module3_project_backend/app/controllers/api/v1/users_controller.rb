@@ -11,8 +11,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:name])
-    @user.pokemons << (params[:pokemon_id])
+    @user = User.new({name: params[:name], pokemon_ids: params[:pokemon_id]})
     if @user.save
       render json: @user
     else
@@ -25,7 +24,7 @@ class Api::V1::UsersController < ApplicationController
     @user_pokemon = @user.user_pokemons.find_by(pokemon_id: params[:pokemon_id])
     if @user_pokemon.update(user_params(:hp_change, :speed_change, :attack_change, :special_attack_change, :defense_change, :special_defense_change))
       render json: @user
-    else 
+    else
       render json: {errors: @note.errors.full_messages}, status: 422
     end
   end
